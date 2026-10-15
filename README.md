@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/images/logo-prefeitura.svg" width="80" height="80" alt="Logo Prefeitura de Itanhaém">
+  <img src="/images/logo.png" width="80" height="80" alt="Logo Prefeitura de Itanhaém">
   <h1>Mapa dos Pontos de Entrega Voluntária</h1>
 </div>
 
