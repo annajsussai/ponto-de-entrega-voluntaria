@@ -226,13 +226,25 @@ html.hc::-webkit-scrollbar-track{background:#fff;border-left:2px solid #000}
 html.hc .pop__body::-webkit-scrollbar-thumb,html.hc .ms-panel::-webkit-scrollbar-thumb{background:#000}
 /* VLibras: só na versão de computador */
 @media (max-width:899px),(pointer:coarse){[vw]{display:none!important}}
-/* MOBILE (só celular): barra de acessibilidade em uma linha e sem filtro de material duplicado */
+
+/* PC: filtros e legenda centralizados */
+@media(min-width:760px){
+  .legend{justify-content:center}
+}
+
+/* MOBILE (só celular) */
 @media(max-width:759px){
+  /* barra de acessibilidade em uma linha */
   .a11y{padding:.45rem 0}
   .a11y .wrap{flex-wrap:nowrap;gap:.4rem;padding:0 .6rem}
   .a11y .wrap>span:first-child{font-size:1rem;white-space:nowrap}
   .a11y button{font-size:1rem;min-height:50px;min-width:50px;padding:.3rem .6rem;white-space:nowrap}
   #hcBtn{flex:1 1 auto;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:.35rem}
-  /* os botões coloridos da legenda já filtram por material, então o menu "Material" fica só no computador */
-  .field--mat{display:none}
+
+  /* filtro de material recolhível (menu com caixinhas coloridas) no lugar da lista longa de botões */
+  .legend{display:none}
+
+  /* rodapé: menu "Ir para" centralizado */
+  .end-more{text-align:center}
+  .end-more ul{justify-items:center}
 }
