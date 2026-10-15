@@ -129,7 +129,7 @@ h2{font:800 clamp(1.9rem,6vw,2.6rem)/1.1 var(--display);color:var(--forest-2);ma
 .end-tips p{display:flex;gap:.6rem;margin:0}
 .end-tips .i{color:var(--sun);margin-top:.15em}
 .end-bar{border-top:1px solid rgba(255,255,255,.18);padding:1.1rem 0 1.6rem;color:#c3d9c9;font-size:.98rem}
-.end-bar .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 1.5rem}
+.end-bar .wrap{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;gap:.4rem 1.5rem}
 .end-bar a{color:#fff}
 html.hc .end{background:#000}
 html.hc .end-bar{border-color:#fff}
@@ -139,11 +139,6 @@ html.hc .end-bar{border-color:#fff}
 html[data-fs="1"]{font-size:115%} html[data-fs="2"]{font-size:130%} html[data-fs="3"]{font-size:150%}
 .skip{position:absolute;left:-999px;top:0;background:var(--sun);color:#000;padding:.8rem 1.2rem;font-weight:700;z-index:99;border-radius:0 0 12px 0}
 .skip:focus{left:0}
-.a11y{background:var(--forest);color:#fff;padding:.55rem 0}
-.a11y .wrap{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center}
-.a11y span{font-weight:700;font-size:1.05rem}
-.a11y button{font:700 1.1rem var(--body);min-height:50px;min-width:50px;padding:.4rem 1rem;border-radius:14px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer}
-.a11y button[aria-pressed="true"]{background:var(--sun);color:#000;border-color:var(--sun)}
 button[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
 .leaflet-marker-icon:focus-visible{outline-offset:0}
 .info dt{font-size:1rem}
@@ -225,26 +220,108 @@ html.hc::-webkit-scrollbar-thumb{background:#000;border-color:#fff}
 html.hc::-webkit-scrollbar-track{background:#fff;border-left:2px solid #000}
 html.hc .pop__body::-webkit-scrollbar-thumb,html.hc .ms-panel::-webkit-scrollbar-thumb{background:#000}
 /* VLibras: só na versão de computador */
-@media (max-width:899px),(pointer:coarse){[vw]{display:none!important}}
+@media (max-width:759px){[vw]{display:none!important}}
 
 /* PC: filtros e legenda centralizados */
 @media(min-width:760px){
   .legend{justify-content:center}
 }
 
+
+/* acessibilidade: botão quadrado arredondado (igual ao do VLibras) que abre um painel */
+.a11y{position:fixed;right:16px;bottom:16px;z-index:2000;display:flex;flex-direction:column;align-items:flex-end;gap:11.2px}
+.a11y-fab{display:grid;place-items:center;width:56px;height:56px;padding:0;border-radius:16px;border:2px solid #fff;
+  background:linear-gradient(160deg,var(--forest-2),var(--forest));color:#fff;cursor:pointer;box-shadow:0 8px 20px -6px rgba(0,0,0,.55);transition:transform .15s}
+.a11y-fab:active{transform:scale(.94)}
+.a11y-fab .i{width:32px;height:32px}
+.a11y-fab[aria-expanded="true"]{background:#fff;color:var(--forest);border-color:var(--forest)}
+.a11y-panel{width:min(310px,calc(100vw - 32px));display:grid;gap:16px;padding:17.6px;border-radius:24px;background:#fff;color:var(--ink);
+  box-shadow:0 24px 50px -14px rgba(0,0,0,.55),0 0 0 1px rgba(12,47,29,.12)}
+.a11y-panel[hidden]{display:none}
+.a11y-panel{max-height:calc(100svh - 24px);overflow:auto;font-size:16px}
+.a11y-panel *{font-size:inherit}
+.a11y-head{display:flex;align-items:center;gap:11.2px}
+.a11y-badge{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:var(--forest-2);color:#fff;flex:none}
+.a11y-badge .i{width:26px;height:26px}
+.a11y-title{margin:0;margin-right:auto;font:800 20.8px/1.1 var(--display);color:var(--forest-2)}
+.a11y-x{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:0;background:var(--mint);color:var(--forest-2);cursor:pointer}
+.a11y-lbl{align-items:center;margin:0 0 8px;display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:16.8px;color:var(--ink)}
+.a11y-lbl b{color:var(--forest-2);background:var(--mint);padding:0 9.6px;border-radius:999px;font-size:15.2px}
+.a11y-seg{display:flex;align-items:center;gap:8px;padding:5.6px;border-radius:18px;background:var(--mint)}
+.a11y-seg button{display:grid;place-items:center;flex:none;width:58px;height:54px;border-radius:14px;border:0;background:#fff;color:var(--forest-2);font:800 21.6px var(--display);cursor:pointer;box-shadow:0 2px 0 rgba(12,47,29,.18)}
+.a11y-seg button small{font-size:13.6px;margin-left:1px;vertical-align:.3em}
+.a11y-seg button[aria-disabled="true"]{opacity:.4}
+.a11y-seg button:active{transform:translateY(2px);box-shadow:none}
+.a11y-dots{flex:1;display:flex;justify-content:center;align-items:flex-end;gap:6.4px}
+.a11y-dots i{width:9.6px;border-radius:4px;background:#b9d0c1}
+.a11y-dots i:nth-child(1){height:11.2px}.a11y-dots i:nth-child(2){height:16px}.a11y-dots i:nth-child(3){height:20.8px}.a11y-dots i:nth-child(4){height:25.6px}
+.a11y-dots i.on{background:var(--forest-2)}
+.a11y-sw{display:flex;align-items:center;justify-content:space-between;gap:12.8px;width:100%;min-height:60px;padding:6.4px 8px 6.4px 14.4px;border-radius:18px;border:0;background:var(--mint);color:var(--ink);font:700 17.6px var(--body);cursor:pointer;text-align:left}
+.a11y-sw-t{display:flex;align-items:center;gap:9.6px}
+.a11y-sw-t .i{color:var(--forest-2);width:1.5em;height:1.5em}
+.a11y-knob{position:relative;flex:none;width:58px;height:34px;border-radius:999px;background:#9db8a6;transition:background .2s}
+.a11y-knob::after{content:"";position:absolute;left:4px;top:4px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.35);transition:transform .2s}
+.a11y-sw[aria-checked="true"] .a11y-knob{background:var(--forest-2)}
+.a11y-sw[aria-checked="true"] .a11y-knob::after{transform:translateX(24px)}
+.a11y-reset{min-height:48px;border:2px solid var(--forest-2);border-radius:14px;background:#fff;color:var(--forest-2);font:700 16.8px var(--body);cursor:pointer}
+html.hc .a11y-fab{background:#000;color:#fff;border-color:#fff}
+html.hc .a11y-fab[aria-expanded="true"]{background:#fff;color:#000;border-color:#000}
+html.hc .a11y-panel{box-shadow:0 0 0 3px #000}
+html.hc .a11y-badge{background:#000;color:#fff}
+html.hc .a11y-seg,html.hc .a11y-sw,html.hc .a11y-x,html.hc .a11y-lbl b{background:#fff;border:3px solid #000;color:#000}
+html.hc .a11y-seg button{border:2px solid #000;color:#000}
+html.hc .a11y-dots i{background:#999}html.hc .a11y-dots i.on{background:#000}
+html.hc .a11y-knob{background:#666}html.hc .a11y-sw[aria-checked="true"] .a11y-knob{background:#000}
+html.hc .a11y-reset{border-color:#000;color:#000}
+/* PC: o botão de acessibilidade fica logo acima do botão do VLibras (que fica à direita, no meio da tela) */
+@media(min-width:760px){
+  .a11y{right:6.4px;bottom:calc(50% + 20px + 12.8px);align-items:flex-end}
+  .a11y-fab{width:48px;height:48px;border-radius:14px}
+  .a11y-fab .i{width:28px;height:28px}
+  .a11y-panel{position:absolute;right:calc(100% + 11.2px);bottom:0}
+}
+
+/* cartões do mesmo tamanho: fonte um pouco menor e altura mínima igual */
+.mat summary{font-size:1.05rem;min-height:96px;padding:1rem;gap:.8rem}
+.mat .ico{width:54px;height:54px;border-radius:17px}
+.mat .ico .i{width:32px;height:32px}
+.mat .more{width:38px;height:38px;font-size:1.6rem}
+
+/* barra final do rodapé */
+.end-bar .wrap{align-items:center}
+.end-bar p{margin:0}
+
 /* MOBILE (só celular) */
 @media(max-width:759px){
-  /* barra de acessibilidade em uma linha */
-  .a11y{padding:.45rem 0}
-  .a11y .wrap{flex-wrap:nowrap;gap:.4rem;padding:0 .6rem}
-  .a11y .wrap>span:first-child{font-size:1rem;white-space:nowrap}
-  .a11y button{font-size:1rem;min-height:50px;min-width:50px;padding:.3rem .6rem;white-space:nowrap}
-  #hcBtn{flex:1 1 auto;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:.35rem}
-
   /* filtro de material recolhível (menu com caixinhas coloridas) no lugar da lista longa de botões */
   .legend{display:none}
 
-  /* rodapé: menu "Ir para" centralizado */
-  .end-more{text-align:center}
-  .end-more ul{justify-items:center}
+  /* rodapé redesenhado para celular: sem atalhos, tudo centralizado e compacto */
+  .end{margin-top:2.5rem;padding-top:3.6rem}
+  .end-more{display:none}
+  .end-grid{padding-bottom:1.6rem}
+  .end-brand{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .end-brand .logo{flex-direction:column;gap:.6rem;font-size:1.25rem;margin-bottom:1.1rem}
+  .end-brand .logo span{width:52px;height:52px;border-radius:16px}
+  .end h2{font-size:1.5rem;margin-bottom:.5rem}
+  .end-brand p{margin:0 auto 1.3rem;font-size:1.05rem}
+  .end .cta{width:100%;justify-content:center;font-size:1.1rem}
+  .end-bar{padding:1.2rem 0 1.6rem}
+  .end-bar .wrap{flex-direction:column;align-items:center;text-align:center;gap:.4rem}
+  .end-bar .sep{display:none}
+  .end-bar .sec{display:block;margin-top:.15rem}
+
+  /* cartões: tudo um pouco menor para os títulos caberem em 2 linhas */
+  .mat summary{gap:.7rem;padding:.9rem;font-size:1.05rem}
+  .mat .ico{width:54px;height:54px;border-radius:17px}
+  .mat .ico .i{width:32px;height:32px}
+  .mat .more{width:38px;height:38px;font-size:1.6rem}
+}
+
+/* tablet e celular (sem VLibras): o botão de acessibilidade ocupa o lugar dele, à direita no meio da tela */
+@media(max-width:759px){
+  .a11y{right:6.4px;bottom:auto;top:50%;transform:translateY(-50%);align-items:flex-end}
+  .a11y-fab{width:48px;height:48px;border-radius:14px}
+  .a11y-fab .i{width:28px;height:28px}
+  .a11y-panel{position:absolute;right:calc(100% + 9.6px);top:50%;transform:translateY(-50%);bottom:auto;width:min(310px,calc(100vw - 72px))}
 }
