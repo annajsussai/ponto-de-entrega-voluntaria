@@ -33,7 +33,7 @@ const MATERIALS = [
 const TIPO_9 = "Óleo lubrificante, filtro e suas embalagens";
 const PONTOS = [
   { nome:"MANUEL R PERDIGAO & CIA LTDA", endereco:"RUA JOÃO MARIANO FERREIRA, 331", bairro:"VILA SAO PAULO", materiais:[9], lat:-24.178466, lng:-46.786587 },
-  { nome:"AUTO POSTO POR DO SOL LTDA", endereco:"RUA JOÃO MARIANO FERREIRA, 370", bairro:"VILA SAO PAULO", materiais:[9], lat:-24.178466, lng:-46.786587 },
+  { nome:"AUTO POSTO POR DO SOL LTDA", endereco:"RUA JOÃO MARIANO FERREIRA, 370", bairro:"VILA SAO PAULO", materiais:[9], lat:-24.179033, lng:-46.7865502 },
   { nome:"AUTO POSTO IBERA LTDA", endereco:"RUA PAPA JOÃO PAULO II, 291", bairro:"GUARDA CIVIL", materiais:[9] },
   { nome:"AUTO POSTO PRAIAS DO SUL LTDA", endereco:"AVENIDA HARRY FORSSEL, 340", bairro:"BELAS ARTES", materiais:[9], busca:"Auto Posto Praias do Sul, Avenida Harry Forssel, 340, Belas Artes, Itanhaém - SP, 11740-000" },
   { nome:"AUTO POSTO PORTO SEGURO LTDA", endereco:"ESTRADA GENTIL PEREZ, 231", bairro:"JD SABAUNA", materiais:[9] },
@@ -59,6 +59,8 @@ const PONTOS = [
 
 /* só mostra em "O que posso levar?" as categorias que têm ao menos um ponto no mapa */
 const USED_MAT = new Set(PONTOS.flatMap((p) => p.materiais));
+/* ordem dos cartões em "O que posso levar?" */
+const CARD_ORDER = [11,10,4,9,5,8];
 const LEG = {9:"Óleo lubrificante e filtro",5:"Medicamentos",10:"Pilhas e baterias",11:"Lâmpadas",8:"Eletrônicos",4:"Óleo de cozinha"};
 /* Uma cor única e distinta por material [cor, texto sobre a cor]: pinos, legenda, etiquetas e cartões. */
 const PAL = {1:["#3949AB","#fff"],2:["#00796B","#fff"],3:["#37474F","#fff"],4:["#F57C00","#111"],5:["#7B1FA2","#fff"],6:["#6D4C41","#fff"],7:["#D81B60","#fff"],8:["#C62828","#fff"],9:["#0277BD","#fff"],10:["#2E7D32","#fff"],11:["#FBC02D","#111"],12:["#9E9D24","#111"]};
@@ -312,8 +314,9 @@ else if (window.matchMedia && matchMedia("(prefers-contrast: more)").matches) a1
 const say = (t) => { document.getElementById("a11yStatus").textContent = t; };
 function applyA11y(){
   const h = document.documentElement; h.dataset.fs = a11y.fs; h.classList.toggle("hc", a11y.hc);
-  document.getElementById("hcIco").innerHTML = ico("contrast");
-  document.getElementById("hcBtn").setAttribute("aria-pressed", a11y.hc);
+  document.getElementById("hcBtn").setAttribute("aria-checked", a11y.hc);
+  document.getElementById("fsName").textContent = FS_NAMES[a11y.fs];
+  document.querySelectorAll(".a11y-dots i").forEach((d, i) => d.classList.toggle("on", i <= a11y.fs));
   document.getElementById("fsDown").setAttribute("aria-disabled", a11y.fs <= 0);
   document.getElementById("fsUp").setAttribute("aria-disabled", a11y.fs >= 3);
   try{ localStorage.setItem(A11Y_KEY, JSON.stringify(a11y)); }catch(e){}
@@ -323,6 +326,13 @@ function initA11y(){
   document.getElementById("fsDown").onclick = () => { if (a11y.fs <= 0) return say("A letra já está no tamanho mínimo."); a11y.fs--; applyA11y(); say("Tamanho da letra: " + FS_NAMES[a11y.fs] + "."); };
   document.getElementById("fsUp").onclick = () => { if (a11y.fs >= 3) return say("A letra já está no tamanho máximo."); a11y.fs++; applyA11y(); say("Tamanho da letra: " + FS_NAMES[a11y.fs] + "."); };
   document.getElementById("hcBtn").onclick = () => { a11y.hc = !a11y.hc; applyA11y(); say(a11y.hc ? "Alto contraste ligado." : "Alto contraste desligado."); };
+  document.getElementById("a11yReset").onclick = () => { a11y.fs = 0; a11y.hc = false; applyA11y(); say("Configurações restauradas."); };
+  document.getElementById("a11yClose").onclick = () => { toggle(false); fab.focus(); };
+  const fab = document.getElementById("a11yFab"), panel = document.getElementById("a11yPanel"), box = document.getElementById("a11y");
+  const toggle = (v) => { panel.hidden = !v; fab.setAttribute("aria-expanded", v); };
+  fab.onclick = () => toggle(panel.hidden);
+  box.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden){ toggle(false); fab.focus(); } });
+  document.addEventListener("click", (e) => { if (!box.contains(e.target)) toggle(false); });
   applyA11y();
 }
 
@@ -330,7 +340,7 @@ function render(){
   if (canSpeak) window.speechSynthesis.cancel();
   buildLegend();
   const M = state.materials, B = state.bairros;
-  const mats = MATERIALS.filter((m) => USED_MAT.has(m.id) && (M.size === 0 || M.has(m.id)));
+  const mats = CARD_ORDER.map((id) => MATERIALS.find((m) => m.id === id)).filter((m) => m && USED_MAT.has(m.id) && (M.size === 0 || M.has(m.id)));
   document.getElementById("cardGrid").innerHTML = mats.map((m) => `
     <details class="mat" style="--c:${COLORS[m.id]};--on:${ON[m.id]}"${ON[m.id] === "#111" ? " data-dark" : ""}${M.size > 0 ? " open" : ""}>
       <summary><span class="ico" aria-hidden="true">${ico(m.icon)}</span><span>${esc(m.name)}</span><span class="more" aria-hidden="true">+</span></summary>
@@ -354,9 +364,9 @@ document.addEventListener("DOMContentLoaded", () => {
   try{ if (initMap()) render(); }catch(e){ document.getElementById("mapError").textContent = "Não foi possível iniciar o mapa."; }
 });
 
-/* VLibras (tradutor para Libras do governo federal): carrega apenas em computador, com tela larga e mouse */
+/* VLibras (tradutor para Libras do governo federal): carrega em computador e tablet; fica de fora só no celular */
 (function(){
-  var desktop = window.matchMedia && matchMedia("(min-width:900px) and (pointer:fine)").matches;
+  var desktop = window.matchMedia && matchMedia("(min-width:760px)").matches;
   if (!desktop){ var v = document.getElementById("vlibras"); if (v) v.remove(); return; }
   var s = document.createElement("script");
   s.src = "https://vlibras.gov.br/app/vlibras-plugin.js"; s.async = true;
