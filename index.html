@@ -22,13 +22,6 @@
 <div vw class="enabled" id="vlibras"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <noscript><p class="nojs">Esta página precisa de JavaScript para mostrar o mapa e a lista de pontos de entrega. Ative o JavaScript ou acesse o <a href="https://www.itanhaem.sp.gov.br/secretaria-de-defesa-do-meio-ambiente-e-bem-estar-animal/logistica-reversa/">site da Prefeitura de Itanhaém sobre logística reversa</a>.</p></noscript>
-<div class="a11y" role="region" aria-label="Opções de acessibilidade"><div class="wrap">
-  <span>Letra:</span>
-  <button type="button" id="fsDown" aria-label="Diminuir o tamanho da letra">A−</button>
-  <button type="button" id="fsUp" aria-label="Aumentar o tamanho da letra">A+</button>
-  <button type="button" id="hcBtn" aria-pressed="false"><span aria-hidden="true" id="hcIco"></span>Alto contraste</button>
-  <span class="sr" id="a11yStatus" role="status" aria-live="polite"></span>
-</div></div>
 
 <header class="hero">
   <div class="wrap">
@@ -72,7 +65,7 @@
         <a class="cta" href="https://www.itanhaem.sp.gov.br/secretaria-de-defesa-do-meio-ambiente-e-bem-estar-animal/logistica-reversa/" target="_blank" rel="noopener">Acessar página da Prefeitura<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span class="sr"> (abre em nova aba)</span></a>
       </div>
       <nav class="end-more" aria-label="Atalhos do rodapé">
-        <h3>Ir para</h3>
+        <h3 class="end-h">Ir para</h3>
         <ul>
           <li><a href="#conteudo" id="footMap"></a></li>
           <li><a href="#cardGrid" id="footMat"></a></li>
@@ -82,10 +75,31 @@
     </div>
   </div>
   <div class="end-bar"><div class="wrap">
-    <span>© <span id="year">2026</span> · Prefeitura de Itanhaém · Secretaria de Defesa do Meio Ambiente e Bem-Estar Animal</span>
-    <span>Mapa © OpenStreetMap · Tiles Esri</span>
+    <p class="cr">© <span id="year">2026</span> · Prefeitura de Itanhaém<span class="sep"> · </span><span class="sec">Secretaria de Defesa do Meio Ambiente e Bem-Estar Animal</span></p>
   </div></div>
 </footer>
+
+<div class="a11y" id="a11y">
+  <div class="a11y-panel" id="a11yPanel" role="group" aria-labelledby="a11yTitle" hidden>
+    <div class="a11y-head">
+      <span class="a11y-badge" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5h14"/><path d="M12 8.5v5"/><path d="m8.5 21 3.5-7.5 3.5 7.5"/></svg></span>
+      <p class="a11y-title" id="a11yTitle">Acessibilidade</p>
+      <button type="button" class="a11y-x" id="a11yClose" aria-label="Fechar painel de acessibilidade"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="a11y-sec">
+      <p class="a11y-lbl">Tamanho da letra <b id="fsName">normal</b></p>
+      <div class="a11y-seg">
+        <button type="button" id="fsDown" aria-label="Diminuir o tamanho da letra"><span aria-hidden="true">A<small>−</small></span></button>
+        <span class="a11y-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <button type="button" id="fsUp" aria-label="Aumentar o tamanho da letra"><span aria-hidden="true">A<small>+</small></span></button>
+      </div>
+    </div>
+    <button type="button" id="hcBtn" class="a11y-sw" role="switch" aria-checked="false"><span class="a11y-sw-t"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>Alto contraste</span><span class="a11y-knob" aria-hidden="true"></span></button>
+    <button type="button" id="a11yReset" class="a11y-reset">Restaurar padrão</button>
+  </div>
+  <button type="button" class="a11y-fab" id="a11yFab" aria-expanded="false" aria-controls="a11yPanel" aria-label="Acessibilidade" title="Acessibilidade"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5h14"/><path d="M12 8.5v5"/><path d="m8.5 21 3.5-7.5 3.5 7.5"/></svg></button>
+  <span class="sr" id="a11yStatus" role="status" aria-live="polite"></span>
+</div>
 
 </body>
 </html>
