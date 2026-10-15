@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c2f1d">
+<title>Ponto de Entrega Voluntária · Itanhaém</title>
+<meta name="description" content="Veja no mapa onde entregar cada material para descarte correto em Itanhaém e trace a rota até o ponto.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2317492e'/><stop offset='1' stop-color='%230c2f1d'/></linearGradient></defs><rect width='64' height='64' rx='15' fill='url(%23g)'/><path d='M32 7C21.5 7 13.5 15 13.5 25.2c0 13.4 18.5 31.8 18.5 31.8s18.5-18.4 18.5-31.8C50.5 15 42.5 7 32 7z' fill='%23ffc83d' stroke='%23fff' stroke-width='2.5' stroke-linejoin='round'/><circle cx='32' cy='25' r='11.5' fill='%23fff'/><path d='M25.5 29c0-7 4.5-10.5 12-11 .3 7.500-3.500 12-12 11z' fill='%2376ad8b'/><path d='M25.5 29c3-3.500 6-6 9.500-8.500' stroke='%2317492e' stroke-width='2' stroke-linecap='round' fill='none'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
+<link rel="preconnect" href="https://nominatim.openstreetmap.org" crossorigin>
+<link rel="preconnect" href="https://geocode.arcgis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body id="top">
+<div vw class="enabled" id="vlibras"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<noscript><p class="nojs">Esta página precisa de JavaScript para mostrar o mapa e a lista de pontos de entrega. Ative o JavaScript ou acesse o <a href="https://www.itanhaem.sp.gov.br/secretaria-de-defesa-do-meio-ambiente-e-bem-estar-animal/logistica-reversa/">site da Prefeitura de Itanhaém sobre logística reversa</a>.</p></noscript>
+<div class="a11y" role="region" aria-label="Opções de acessibilidade"><div class="wrap">
+  <span>Letra:</span>
+  <button type="button" id="fsDown" aria-label="Diminuir o tamanho da letra">A−</button>
+  <button type="button" id="fsUp" aria-label="Aumentar o tamanho da letra">A+</button>
+  <button type="button" id="hcBtn" aria-pressed="false"><span aria-hidden="true" id="hcIco"></span>Alto contraste</button>
+  <span class="sr" id="a11yStatus" role="status" aria-live="polite"></span>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Ponto de Entrega Voluntária</h1>
+    <p>Veja no mapa onde entregar cada material em Itanhaém e use o botão “Como chegar”.</p>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,80 480,0 720,24 C960,48 1200,72 1440,32 L1440,80 L0,80 Z"/></svg>
+</header>
+
+<main class="wrap" id="conteudo" tabindex="-1">
+  <section class="stage" aria-labelledby="mapaTitulo">
+    <h2 class="sr" id="mapaTitulo">Mapa e filtros dos pontos de entrega</h2>
+    <div class="panel">
+      <p class="help" id="filtrosHelp"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>Toque nos pinos do mapa</strong> para ver o endereço, o que cada local recebe e o botão “Como chegar”. Para achar mais rápido, marque os materiais e bairros abaixo.</span></p>
+      <div class="filters" role="group" aria-label="Filtros dos pontos de entrega">
+        <div class="field field--mat"><span class="lbl" id="matMs-lbl">Material</span><div class="ms" id="matMs"></div></div>
+        <div class="field"><span class="lbl" id="bairroMs-lbl">Bairro</span><div class="ms" id="bairroMs"></div></div>
+        <button type="button" class="btn-clear" id="clearFilters">Limpar filtros</button>
+      </div>
+      <ul class="legend" id="legend" role="list" aria-label="Filtrar por material. Cada botão liga ou desliga o filtro."></ul>
+      <p class="sr" id="mapHelp">Use a tecla Tab para percorrer os pinos e Enter para abrir os dados de cada um. As setas movem o mapa; mais e menos aproximam ou afastam.</p>
+      <div id="map" role="region" aria-label="Mapa dos pontos de entrega em Itanhaém" aria-describedby="mapHelp"></div>
+      <div class="foot-row"><span id="resultCount" aria-live="polite"></span><small id="mapNote" role="status"></small></div>
+      <p class="foot-error" id="mapError" role="alert"></p>
+    </div>
+  </section>
+
+  <h2>O que posso levar?</h2>
+  <p class="sub">Ative o nome do material para ver o que entra em cada categoria. Os materiais escolhidos no filtro aparecem aqui.</p>
+  <div class="cards" id="cardGrid"></div>
+</main>
+
+<footer class="end">
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,80 480,0 720,24 C960,48 1200,72 1440,32 L1440,80 L0,80 Z"/></svg>
+  <div class="wrap">
+    <div class="end-grid">
+      <div class="end-brand">
+        <div class="logo"><span aria-hidden="true" id="footIco"></span>Ponto de Entrega Voluntária</div>
+        <h2>Quer saber mais sobre logística reversa?</h2>
+        <p>O que é, como funciona e a cartilha completa estão na página da Prefeitura.</p>
+        <a class="cta" href="https://www.itanhaem.sp.gov.br/secretaria-de-defesa-do-meio-ambiente-e-bem-estar-animal/logistica-reversa/" target="_blank" rel="noopener">Acessar página da Prefeitura<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span class="sr"> (abre em nova aba)</span></a>
+      </div>
+      <nav class="end-more" aria-label="Atalhos do rodapé">
+        <h3>Ir para</h3>
+        <ul>
+          <li><a href="#conteudo" id="footMap"></a></li>
+          <li><a href="#cardGrid" id="footMat"></a></li>
+          <li><a href="#top" id="footTop"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="end-bar"><div class="wrap">
+    <span>© <span id="year">2026</span> · Prefeitura de Itanhaém · Secretaria de Defesa do Meio Ambiente e Bem-Estar Animal</span>
+    <span>Mapa © OpenStreetMap · Tiles Esri</span>
+  </div></div>
+</footer>
+
+</body>
+</html>
