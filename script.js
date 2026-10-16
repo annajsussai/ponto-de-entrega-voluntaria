@@ -54,7 +54,7 @@ const PONTOS = [
   { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4] },
   { nome:"TELEFONICA BRASIL S.A. (VIVO)", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 78", bairro:"CENTRO", materiais:[8], busca:"Loja Vivo, Rua Antonio Olivio de Araujo, 78, Centro, Itanhaém - SP, 11740-000" },
   { nome:"IMAGEM TELECOM COMERCIO E SERVICOS DE TELEFONIA LTDA (TIM)", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 193", bairro:"CENTRO", materiais:[8] },
-  { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48 235", bairro:"CENTRO", materiais:[8] },
+  { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48", bairro:"CENTRO", materiais:[8] },
 ];
 
 /* só mostra em "O que posso levar?" as categorias que têm ao menos um ponto no mapa */
