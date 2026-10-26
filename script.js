@@ -51,7 +51,7 @@ const PONTOS = [
   { nome:"DROGARIA SAO PAULO S.A.", endereco:"AVENIDA RUI BARBOSA, 26", bairro:"CENTRO", materiais:[5] },
   { nome:"DEBORA CONCEICAO DE FREITAS", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 74", bairro:"CENTRO", materiais:[5] },
   { nome:"REDE KRILL SUPERMERCADOS LTDA", endereco:"RUA DOS FUNDADORES, 463", bairro:"PRAIA DOS SONHOS", materiais:[10] },
-  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4], lat:-24.1857097, lng:-46.8214375 },
+  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4], lat:-24.1817269, lng:-46.8133982, link:"https://www.google.com/maps/place/Tenda+Atacado+-+Itanha%C3%A9m/@-24.1828701,-46.8213425,16.25z/data=!4m21!1m14!4m13!1m4!2m2!1d-46.7894272!2d-24.182784!4e1!1m6!1m2!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!2sTenda+Atacado+-+Itanha%C3%A9m,+Rua+Jos%C3%A9+S.+Bechelli,+1351+Jardim+-+Saba%C3%BAna,+Itanha%C3%A9m+-+SP,+11740-000!2m2!1d-46.8133982!2d-24.1817269!3e0!3m5!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!8m2!3d-24.1817269!4d-46.8133982!16s%2Fg%2F11b75gh9r1?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" },
   { nome:"TELEFONICA BRASIL S.A. (VIVO)", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 78", bairro:"CENTRO", materiais:[8], busca:"Loja Vivo, Rua Antonio Olivio de Araujo, 78, Centro, Itanhaém - SP, 11740-000" },
   { nome:"IMAGEM TELECOM COMERCIO E SERVICOS DE TELEFONIA LTDA (TIM)", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 193", bairro:"CENTRO", materiais:[8] },
   { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48", bairro:"CENTRO", materiais:[8] },
@@ -98,10 +98,11 @@ function toggleSpeak(btn){
 const bindSpeak = (root) => root && root.querySelectorAll("[data-speak]").forEach((b) => b.onclick = () => toggleSpeak(b));
 
 function routeUrl(p){
+  if (p.link) return p.link;
   const dest = p.busca || (p.lat != null && !p.approx ? `${p.lat},${p.lng}` : `${p.endereco}, ${p.bairro}, Itanhaém, SP, Brasil`);
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}&travelmode=driving`;
 }
-const routeBtn = (p) => `<a class="btn-route" href="${routeUrl(p)}" target="_blank" rel="noopener">${ico("compass")} Como chegar<span class="sr"> a ${esc(titleCase(p.nome))}, abre o Google Maps em nova aba</span></a>`;
+const routeBtn = (p) => `<a class="btn-route" href="${esc(routeUrl(p))}" target="_blank" rel="noopener">${ico("compass")} Como chegar<span class="sr"> a ${esc(titleCase(p.nome))}, abre o Google Maps em nova aba</span></a>`;
 
 /* mapa */
 let map, layer;
@@ -126,7 +127,7 @@ function popupHtml(p){
 window.copiarCoordenadas = () => {
   const falta = PONTOS.filter((p) => p.lat == null || p.approx).length;
   if (falta) console.warn(falta + " ponto(s) ainda sem posição real. Espere o mapa terminar de localizar e rode de novo.");
-  const L2 = PONTOS.map((p) => { const o = {nome:p.nome,endereco:p.endereco,bairro:p.bairro,materiais:p.materiais}; if (p.busca) o.busca = p.busca; if (p.lat != null && !p.approx){ o.lat = +p.lat.toFixed(6); o.lng = +p.lng.toFixed(6); } return o; });
+  const L2 = PONTOS.map((p) => { const o = {nome:p.nome,endereco:p.endereco,bairro:p.bairro,materiais:p.materiais}; if (p.busca) o.busca = p.busca; if (p.link) o.link = p.link; if (p.lat != null && !p.approx){ o.lat = +p.lat.toFixed(6); o.lng = +p.lng.toFixed(6); } return o; });
   const t = "const PONTOS = [\n" + L2.map((o) => "  " + JSON.stringify(o).replace(/"(\w+)":/g,"$1:")).join(",\n") + "\n];";
   console.log(t); return t;
 };
