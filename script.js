@@ -51,7 +51,7 @@ const PONTOS = [
   { nome:"DROGARIA SAO PAULO S.A.", endereco:"AVENIDA RUI BARBOSA, 26", bairro:"CENTRO", materiais:[5] },
   { nome:"DEBORA CONCEICAO DE FREITAS", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 74", bairro:"CENTRO", materiais:[5] },
   { nome:"REDE KRILL SUPERMERCADOS LTDA", endereco:"RUA DOS FUNDADORES, 463", bairro:"PRAIA DOS SONHOS", materiais:[10] },
-  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4] },
+  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4], lat:-24.1857097, lng:-46.8214375 },
   { nome:"TELEFONICA BRASIL S.A. (VIVO)", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 78", bairro:"CENTRO", materiais:[8], busca:"Loja Vivo, Rua Antonio Olivio de Araujo, 78, Centro, Itanhaém - SP, 11740-000" },
   { nome:"IMAGEM TELECOM COMERCIO E SERVICOS DE TELEFONIA LTDA (TIM)", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 193", bairro:"CENTRO", materiais:[8] },
   { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48", bairro:"CENTRO", materiais:[8] },
