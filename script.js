@@ -55,6 +55,51 @@ const PONTOS = [
   { nome:"TELEFONICA BRASIL S.A. (VIVO)", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 78", bairro:"CENTRO", materiais:[8], busca:"Loja Vivo, Rua Antonio Olivio de Araujo, 78, Centro, Itanhaém - SP, 11740-000" },
   { nome:"IMAGEM TELECOM COMERCIO E SERVICOS DE TELEFONIA LTDA (TIM)", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 193", bairro:"CENTRO", materiais:[8] },
   { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48", bairro:"CENTRO", materiais:[8] },
+  /* Escolas e creches municipais (planilha PEV-PILHAS e baterias): recebem pilhas e baterias. */
+  {nome:"Creche Carlos Mayer Filho",endereco:"Rua Jaime Lino dos Santos, 158",bairro:"JARDIM ITANHAÉM",materiais:[10],lat:-24.165982,lng:-46.776702,link:"https://www.google.com/maps/dir//CARLOS+MAYER+FILHO+%E2%80%93+EM+ANA+C%C3%82NDIDA,+R.+Jaime+Lino+dos+Santos,+158+-+Jardim,+Itanha%C3%A9m+-+SP,+11740-000/@-24.1790936,-46.7786973,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94ce2b68af5b6aef:0x1ac80ed3c524af08!2m2!1d-46.7767025!2d-24.1659822"},
+  {nome:"Creche Marcos Vinícius de Almeida Batista",endereco:"Rua Raimundo Batista de Andrade, 1045",bairro:"CIBRATEL 1",materiais:[10],lat:-24.202451,lng:-46.821576,link:"https://www.google.com/maps/dir//R.+Raimundo+Batista+de+Andrade,+1045+-+Cibratel+I,+Itanha%C3%A9m+-+SP,+11740-000/@-24.202299,-46.821696,15z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x94d1d54bcabf5685:0x6f0dde24d99675fd!2m2!1d-46.8215764!2d-24.2024506!3e2"},
+  {nome:"Creche Mário Tisuyoshi Ginoza",endereco:"Rua Jose Roberio dos Santos, 1616",bairro:"JARDIM SÃO JOÃO",materiais:[10],lat:-24.227395,lng:-46.887719,link:"https://www.google.com/maps/dir//R.+Jose+Roberio+Dos+Santos,+1616+-+Balneario+California,+Itanha%C3%A9m+-+SP,+11740-000/@-24.2273408,-46.8883764,19.25z/data=!4m18!1m8!3m7!1s0x94d02a15e56f55d5:0x7cff3500eff72530!2sR.+Jose+Roberio+Dos+Santos,+1616+-+Balneario+California,+Itanha%C3%A9m+-+SP,+11740-000!3b1!8m2!3d-24.2273947!4d-46.8877194!16s%2Fg%2F11hv0_3vsj!4m8!1m0!1m5!1m1!1s0x94d02a15e56f55d5:0x7cff3500eff72530!2m2!1d-46.8877194!2d-24.2273947!3e2"},
+  {nome:"Creche Nádia Rezek Barbosa",endereco:"Rua Padre Afonso Maria Ratisbone, 4839",bairro:"JARDIM SUARÃO",materiais:[10],lat:-24.160771,lng:-46.753195,link:"https://www.google.com/maps/place/R.+Padre+Afonso+Maria+Ratisbone,+4.839+-+Jardim+Suar%C3%A3o+-+Interior,+Itanha%C3%A9m+-+SP,+11740-000/@-24.1607658,-46.7557704,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce2a07488ad591:0xb4f1048e1bf706cb!8m2!3d-24.1607707!4d-46.7531955!16s%2Fg%2F11s8dvf4f4"},
+  {nome:"Creche Renata Cianbroni",endereco:"Avenida Condessa de Vimieiros, 1459",bairro:"CENTRO",materiais:[10],lat:-24.178735,lng:-46.776041,link:"https://www.google.com/maps/dir//Av.+Condessa+de+Vimieiros,+1459+-+Centro,+Itanha%C3%A9m+-+SP,+11740-000/@-24.1788324,-46.7760492,15z/data=!4m18!1m8!3m7!1s0x94d1d58fef35101f:0x17b4e4c5829bc710!2sAv.+Condessa+de+Vimieiros,+1459+-+Centro,+Itanha%C3%A9m+-+SP,+11740-000!3b1!8m2!3d-24.1787351!4d-46.7760411!16s%2Fg%2F11v0_3ql3f!4m8!1m0!1m5!1m1!1s0x94d1d58fef35101f:0x17b4e4c5829bc710!2m2!1d-46.7760411!2d-24.1787351!3e2"},
+  {nome:"E.M. Ana Cândida Ebling de Oliveira",endereco:"Rua Otacílio Dantas, 606",bairro:"JARDIM SAVOY",materiais:[10],lat:-24.166415,lng:-46.776113,link:"https://www.google.com/maps/dir//EM+Ana+C%C3%A2ndida+Ebling+de+Oliveira,+R.+Otac%C3%ADlio+Dantas,+606+-+Savoy,+Itanha%C3%A9m+-+SP,+11740-000/@-24.1790863,-46.7780924,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94ce2a774242a17f:0x5030bae4f48c4dbf!2m2!1d-46.7761131!2d-24.166415"},
+  {nome:"E.M. Benedita Matias Gonçalves",endereco:"Rua João Andrade Júnior, 400",bairro:"JARDIM GAIVOTA",materiais:[10],busca:"E.M. Benedita Matias Gonçalves, Rua João Andrade Júnior, 400 - Jardim Gaivota, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Bernardino de Souza Pereira",endereco:"Rua Urisez de Oliveira, S/N",bairro:"JARDIM CORUMBÁ",materiais:[10],busca:"E.M. Bernardino de Souza Pereira, Rua Urisez de Oliveira, s/n - Jardim Corumbá, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Carlos Augusto Guimarães da Silva",endereco:"Avenida Brasil, 32",bairro:"UMUARAMA",materiais:[10],busca:"E.M. Carlos Augusto Guimarães da Silva, Avenida Brasil, 32 - Umuarama, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Célia Marina Dal Pozzo Borges",endereco:"Rua Vítor Meireles, 60",bairro:"JARDIM RIO BRANCO",materiais:[10],busca:"E.M. Célia Marina Dal Pozzo Borges, Rua Vítor Meireles, 60 - Jardim Rio Branco, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Dalva Dati Ruivo",endereco:"Rua José Antônio da Silva, 26",bairro:"JARDIM BOPSEN",materiais:[10],busca:"E.M. Dalva Dati Ruivo, Rua José Antônio da Silva, 26 - Jardim Bopsen, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Diva do Carmo Alves de Lima",endereco:"Rua Alziro Lebrão, S/N",bairro:"JARDIM GUAPURÁ",materiais:[10],busca:"E.M. Diva do Carmo Alves de Lima, Rua Alziro Lebrão, s/n - Jardim Guapurá, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Divani Maria Cardoso",endereco:"Rua 15, S/N",bairro:"JARDIM OÁSIS",materiais:[10],busca:"E.M. Divani Maria Cardoso, Rua 15, s/n - Jardim Oásis, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Edson Baptista de Andrade",endereco:"Rua Flávio Magalhães, 885",bairro:"JARDIM MARILU",materiais:[10],busca:"E.M. Edson Baptista de Andrade, Rua Flávio Magalhães, 885 - Jardim Marilu, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Elga Reis",endereco:"Rua José dos Santos, S/N",bairro:"JARDIM OÁSIS",materiais:[10],busca:"E.M. Elga Reis, Rua José dos Santos, s/n - Jardim Oásis, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Eugênia Pitta Rangel Veloso",endereco:"Avenida Portugal, 260",bairro:"BELAS ARTES",materiais:[10],busca:"E.M. Eugênia Pitta Rangel Veloso, Avenida Portugal, 260 - Jardim Belas Artes, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Filomena Dias Apelian",endereco:"Rua dos Expedicionários, 160",bairro:"BOPIRANGA",materiais:[10],busca:"E.M. Filomena Dias Apelian, Rua dos Expedicionários, 160 - Bopiranga, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Gioconda Fagá",endereco:"Rua Dom Idílio José Soares, S/N",bairro:"JARDIM GRANDESP",materiais:[10],busca:"E.M. Gioconda Fagá, Rua Dom Idílio José Soares, s/n - Jardim Grandesp, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Harry Forssell",endereco:"Rua Urcezino Ferreira, 80",bairro:"SABAUNA",materiais:[10],busca:"E.M. Harry Forssell, Rua Urcezino Ferreira, 80 - Sabaúna, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Ignez Martins",endereco:"Rua das Palmeiras, 150",bairro:"JARDIM LARANJEIRAS",materiais:[10],busca:"E.M. Ignez Martins, Rua das Palmeiras, 150 - Jardim Laranjeiras, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Itaílde Silva Castro Bragante",endereco:"Rua Principal, S/N",bairro:"CHÁCARAS DAS TÂMARAS",materiais:[10],busca:"E.M. Itaílde Silva Castro Bragante, Rua Principal, s/n - Chácaras das Tâmaras, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. José Teixeira Rosas",endereco:"Rua das Flores, S/N",bairro:"JARDIM CORONEL",materiais:[10],busca:"E.M. José Teixeira Rosas, Rua das Flores, s/n - Jardim Coronel, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Leonor Mendes de Barros",endereco:"Rua Cesário Bastos, 150",bairro:"VILA NOVA ITANHAÉM",materiais:[10],busca:"E.M. Leonor Mendes de Barros, Rua Cesário Bastos, 150 - Vila Nova Itanhaém, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Lídia Martha Ferriello Gianotti",endereco:"Rua Padre Afonso Maria Ratisbone, 4839",bairro:"JARDIM SUARÃO",materiais:[10],busca:"E.M. Lídia Martha Ferriello Gianotti, Rua Padre Afonso Maria Ratisbone, 4839 - Jardim Suarão, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Lilian Aparecida Borges Prado",endereco:"Rua José Batista de Campos, S/N",bairro:"JARDIM OÁSIS",materiais:[10],busca:"E.M. Lilian Aparecida Borges Prado, Rua José Batista de Campos, s/n - Jardim Oásis, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Lions Clube",endereco:"Rua dos Estudantes, S/N",bairro:"JARDIM SAVOY",materiais:[10],busca:"E.M. Lions Clube, Rua dos Estudantes, s/n - Jardim Savoy, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Luiz Gonzaga Silva Fonseca",endereco:"Rua das Palmeiras, 100",bairro:"JARDIM REGINA",materiais:[10],busca:"E.M. Luiz Gonzaga Silva Fonseca, Rua das Palmeiras, 100 - Jardim Regina, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria Aparecida Soares Amêndola",endereco:"Rua Dom José Gaspar, S/N",bairro:"JARDIM IVOTY",materiais:[10],busca:"E.M. Maria Aparecida Soares Amêndola, Rua Dom José Gaspar, s/n - Jardim Ivoty, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria Conceição Luz",endereco:"Rua Benedito Celso de Oliveira, S/N",bairro:"JARDIM RIO BRANCO",materiais:[10],busca:"E.M. Maria Conceição Luz, Rua Benedito Celso de Oliveira, s/n - Jardim Rio Branco, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria Cristina de Macedo Gomes",endereco:"Rua Emídio de Souza, S/N",bairro:"JARDIM OÁSIS",materiais:[10],busca:"E.M. Maria Cristina de Macedo Gomes, Rua Emídio de Souza, s/n - Jardim Oásis, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria da Penha Correa Sanches",endereco:"Rua Raimundo Batista de Andrade, S/N",bairro:"CIBRATEL 2",materiais:[10],busca:"E.M. Maria da Penha Correa Sanches, Rua Raimundo Batista de Andrade, s/n - Cibratel II, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria das Graças Alves Santos",endereco:"Rua Guapiranga, S/N",bairro:"JARDIM GUAPIRANGA",materiais:[10],busca:"E.M. Maria das Graças Alves Santos, Rua Guapiranga, s/n - Jardim Guapiranga, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria do Carmo Sodré",endereco:"Rua Guaratuba, 100",bairro:"JARDIM AMÉRICA",materiais:[10],busca:"E.M. Maria do Carmo Sodré, Rua Guaratuba, 100 - Jardim América, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria Graciette Dias",endereco:"Rua Portugal, S/N",bairro:"BELAS ARTES",materiais:[10],busca:"E.M. Maria Graciette Dias, Rua Portugal, s/n - Jardim Belas Artes, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Maria Patrocina Condota",endereco:"Rua João Andrade Júnior, S/N",bairro:"JARDIM GAIVOTA",materiais:[10],busca:"E.M. Maria Patrocina Condota, Rua João Andrade Júnior, s/n - Jardim Gaivota, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Nildemar de Souza Oliveira",endereco:"Rua São Fernando, 200",bairro:"JARDIM SÃO FERNANDO",materiais:[10],busca:"E.M. Nildemar de Souza Oliveira, Rua São Fernando, 200 - Jardim São Fernando, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Noemia Salles Padovan",endereco:"Rua dos Fundadores, S/N",bairro:"JARDIM GUAPIRANGA",materiais:[10],busca:"E.M. Noemia Salles Padovan, Rua dos Fundadores, s/n - Jardim Guapiranga, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Olga Lopes de Mendonça",endereco:"Rua das Flores, 50",bairro:"JARDIM CORONEL",materiais:[10],busca:"E.M. Olga Lopes de Mendonça, Rua das Flores, 50 - Jardim Coronel, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Osmar Rodrigues",endereco:"Rua Flávio Magalhães, S/N",bairro:"JARDIM GAIVOTA",materiais:[10],busca:"E.M. Osmar Rodrigues, Rua Flávio Magalhães, s/n - Jardim Gaivota, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Pedrina Pompeu Bastos",endereco:"Rua Brasil, 120",bairro:"JARDIM MARILU",materiais:[10],busca:"E.M. Pedrina Pompeu Bastos, Rua Brasil, 120 - Jardim Marilu, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Silvia Regina Schiavon Marasca",endereco:"Avenida Condessa de Vimieiros, S/N",bairro:"JARDIM GRANDESP",materiais:[10],busca:"E.M. Silvia Regina Schiavon Marasca, Avenida Condessa de Vimieiros, s/n - Jardim Grandesp, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Tia Pombinha",endereco:"Rua José Batista de Campos, 55",bairro:"JARDIM OÁSIS",materiais:[10],busca:"E.M. Tia Pombinha, Rua José Batista de Campos, 55 - Jardim Oásis, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Walter Arduini",endereco:"Rua Sorocaba, 185",bairro:"CIBRATEL 2",materiais:[10],busca:"E.M. Walter Arduini, Rua Sorocaba, 185 - Cibratel II, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Zuleica Barros de Assis",endereco:"Rua Três, 150",bairro:"JARDIM SAVOY",materiais:[10],busca:"E.M. Zuleica Barros de Assis, Rua Três, 150 - Jardim Savoy, Itanhaém - SP, 11740-000"},
 ];
 
 /* só mostra em "O que posso levar?" as categorias que têm ao menos um ponto no mapa */
@@ -70,7 +115,7 @@ const state = { materials:new Set(), bairros:new Set() };
 let matMs, bairroMs;
 const matName = (id) => MATERIALS.find((m) => m.id === id).name;
 const esc = (s) => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const SPECIAL = {II:"II",TIM:"TIM",LTDA:"Ltda.",CIA:"Cia.",SA:"S.A.","S/A":"S.A.","S.A":"S.A.","S.A.":"S.A.","S/N":"sem número",JD:"Jardim",SAO:"São",PERDIGAO:"Perdigão",SATELITE:"Satélite",ATACADAO:"Atacadão",CONCEICAO:"Conceição",DEBORA:"Débora",COMERCIO:"Comércio",SERVICOS:"Serviços",FARMACIA:"Farmácia",ITANHAEM:"Itanhaém",SABAUNA:"Sabaúna"};
+const SPECIAL = {"E.M.":"E.M.",II:"II",TIM:"TIM",LTDA:"Ltda.",CIA:"Cia.",SA:"S.A.","S/A":"S.A.","S.A":"S.A.","S.A.":"S.A.","S/N":"sem número",JD:"Jardim",SAO:"São",PERDIGAO:"Perdigão",SATELITE:"Satélite",ATACADAO:"Atacadão",CONCEICAO:"Conceição",DEBORA:"Débora",COMERCIO:"Comércio",SERVICOS:"Serviços",FARMACIA:"Farmácia",ITANHAEM:"Itanhaém",SABAUNA:"Sabaúna"};
 const SMALL = new Set(["de","da","do","dos","das","e"]);
 const titleCase = (s) => String(s).trim().split(/\s+/).map((w,i) => {
   const lead = (w.match(/^\(+/)||[""])[0], trail = (w.match(/[),]+$/)||[""])[0];
@@ -86,7 +131,7 @@ const stripe = (p) => { const c = p.materiais.map((i) => COLORS[i]), n = c.lengt
 const canSpeak = "speechSynthesis" in window;
 const speakLabel = (p, on) => `${ico(on ? "stop" : "volume")} ${on ? "Parar a leitura" : "Ouvir os dados"}<span class="sr"> de ${esc(titleCase(p.nome))}</span>`;
 const speakBtn = (p) => canSpeak ? `<button type="button" class="btn-speak" data-speak="${PONTOS.indexOf(p)}">${speakLabel(p,false)}</button>` : "";
-const speakText = (p) => `${titleCase(p.nome)}. Endereço: ${titleCase(p.endereco)}. Bairro: ${titleCase(p.bairro)}, Itanhaém. Recebe: ${p.materiais.map((id) => LEG[id]||matName(id)).join(", ")}.`;
+const speakText = (p) => `${titleCase(p.nome).replace(/^E\.M\./,"Escola Municipal")}. Endereço: ${titleCase(p.endereco)}. Bairro: ${titleCase(p.bairro)}, Itanhaém. Recebe: ${p.materiais.map((id) => LEG[id]||matName(id)).join(", ")}.`;
 function toggleSpeak(btn){
   const s = window.speechSynthesis, was = btn.dataset.on === "1", p = PONTOS[+btn.dataset.speak];
   s.cancel(); if (was) return;
@@ -217,7 +262,7 @@ let markers = [], visible = new Set(), popupOpen = false, geoQueue = [];
 function addMarker(p){
   p.drawn = true;
   const nome = titleCase(p.nome) + (p.approx ? " (posição aproximada)" : "");
-  const mk = L.marker([p.lat,p.lng],{icon:pinIcon(p.materiais,p.num),title:`${nome} · ${tipoTxt(p)}`,alt:nome}).bindPopup(popupHtml(p)).addTo(layer);
+  const mk = L.marker([p.lat,p.lng],{icon:pinIcon(p.materiais,p.num),title:`${nome} · ${tipoTxt(p)}`,alt:nome}).bindPopup(() => popupHtml(p)).addTo(layer);
   p.mk = mk; markers.push(mk);
   const el = mk.getElement();
   if (el){ el.setAttribute("aria-label",`Ponto ${p.num}: ${nome}, bairro ${titleCase(p.bairro)}. Recebe ${tipoTxt(p)}. Pressione Enter para abrir os dados.`); el.setAttribute("aria-haspopup","dialog"); }
@@ -361,16 +406,21 @@ function buildFooter(){
   set("footMap", ico("compass") + " Mapa e filtros"); set("footMat", ico("bottle") + " O que posso levar?"); set("footTop", ico("chevron","up") + " Voltar ao topo");
 }
 document.addEventListener("DOMContentLoaded", () => {
-  buildFilters(); initA11y(); buildFooter(); render();   // página e filtros primeiro, sem depender do mapa
-  try{ if (initMap()) render(); }catch(e){ document.getElementById("mapError").textContent = "Não foi possível iniciar o mapa."; }
+  buildFilters(); initA11y(); buildFooter();
+  try{ initMap(); }catch(e){ map = null; document.getElementById("mapError").textContent = "Não foi possível iniciar o mapa."; }
+  render();   // uma única renderização: cartões, filtros e pinos
 });
 
-/* VLibras (tradutor para Libras do governo federal): carrega em computador e tablet; fica de fora só no celular */
+/* VLibras (tradutor para Libras do governo federal): carrega em computador e tablet */
 (function(){
   var desktop = window.matchMedia && matchMedia("(min-width:760px)").matches;
   if (!desktop){ var v = document.getElementById("vlibras"); if (v) v.remove(); return; }
-  var s = document.createElement("script");
-  s.src = "https://vlibras.gov.br/app/vlibras-plugin.js"; s.async = true;
-  s.onload = function(){ try{ new window.VLibras.Widget("https://vlibras.gov.br/app"); }catch(e){} };
-  document.body.appendChild(s);
+  var load = function(){
+    var s = document.createElement("script");
+    s.src = "https://vlibras.gov.br/app/vlibras-plugin.js"; s.async = true;
+    s.onload = function(){ try{ new window.VLibras.Widget("https://vlibras.gov.br/app"); }catch(e){} };
+    document.body.appendChild(s);
+  };
+  var idle = function(){ if ("requestIdleCallback" in window) requestIdleCallback(load,{timeout:4000}); else setTimeout(load,1500); };
+  if (document.readyState === "complete") idle(); else window.addEventListener("load", idle, {once:true});
 })();
