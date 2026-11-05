@@ -399,6 +399,9 @@ function render(){
   buildLegend();
   const M = state.materials, B = state.bairros;
   const mats = CARD_ORDER.map((id) => MATERIALS.find((m) => m.id === id)).filter((m) => m && USED_MAT.has(m.id) && (M.size === 0 || M.has(m.id)));
+  /* cards com menos texto primeiro; os mais longos ficam embaixo (ordem original mantida em empates) */
+  const tam = (m) => (m.intro || "").length + m.items.join("").length + (m.note || "").length;
+  mats.sort((a, b) => tam(a) - tam(b));
   document.getElementById("cardGrid").innerHTML = mats.map((m) => `
     <details class="mat" style="--c:${COLORS[m.id]};--on:${ON[m.id]}"${ON[m.id] === "#111" ? " data-dark" : ""}${M.size > 0 ? " open" : ""}>
       <summary><span class="ico" aria-hidden="true">${ico(m.icon)}</span><span>${esc(m.name)}</span><span class="more" aria-hidden="true">+</span></summary>
