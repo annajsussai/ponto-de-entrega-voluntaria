@@ -51,11 +51,10 @@ const PONTOS = [
   { nome:"DROGARIA SAO PAULO S.A.", endereco:"AVENIDA RUI BARBOSA, 26", bairro:"CENTRO", materiais:[5] },
   { nome:"DEBORA CONCEICAO DE FREITAS", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 74", bairro:"CENTRO", materiais:[5] },
   { nome:"REDE KRILL SUPERMERCADOS LTDA", endereco:"RUA DOS FUNDADORES, 463", bairro:"PRAIA DOS SONHOS", materiais:[10] },
-  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"SABAUNA", materiais:[4], lat:-24.1817269, lng:-46.8133982, link:"https://www.google.com/maps/place/Tenda+Atacado+-+Itanha%C3%A9m/@-24.1828701,-46.8213425,16.25z/data=!4m21!1m14!4m13!1m4!2m2!1d-46.7894272!2d-24.182784!4e1!1m6!1m2!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!2sTenda+Atacado+-+Itanha%C3%A9m,+Rua+Jos%C3%A9+S.+Bechelli,+1351+Jardim+-+Saba%C3%BAna,+Itanha%C3%A9m+-+SP,+11740-000!2m2!1d-46.8133982!2d-24.1817269!3e0!3m5!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!8m2!3d-24.1817269!4d-46.8133982!16s%2Fg%2F11b75gh9r1?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" },
+  { nome:"TENDA ATACADO SA", endereco:"AVENIDA PADRE MANOEL DA NÓBREGA", bairro:"JD SABAUNA", materiais:[4], lat:-24.1817269, lng:-46.8133982, link:"https://www.google.com/maps/place/Tenda+Atacado+-+Itanha%C3%A9m/@-24.1828701,-46.8213425,16.25z/data=!4m21!1m14!4m13!1m4!2m2!1d-46.7894272!2d-24.182784!4e1!1m6!1m2!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!2sTenda+Atacado+-+Itanha%C3%A9m,+Rua+Jos%C3%A9+S.+Bechelli,+1351+Jardim+-+Saba%C3%BAna,+Itanha%C3%A9m+-+SP,+11740-000!2m2!1d-46.8133982!2d-24.1817269!3e0!3m5!1s0x94ce2aa80aefbb47:0x9d2f948f913ce777!8m2!3d-24.1817269!4d-46.8133982!16s%2Fg%2F11b75gh9r1?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" },
   { nome:"TELEFONICA BRASIL S.A. (VIVO)", endereco:"RUA ANTONIO OLIVIO DE ARAUJO, 78", bairro:"CENTRO", materiais:[8], busca:"Loja Vivo, Rua Antonio Olivio de Araujo, 78, Centro, Itanhaém - SP, 11740-000" },
   { nome:"IMAGEM TELECOM COMERCIO E SERVICOS DE TELEFONIA LTDA (TIM)", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 193", bairro:"CENTRO", materiais:[8] },
   { nome:"MAGAZINE LUIZA S/A", endereco:"AVENIDA CONDESSA DE VIMIEIROS, 48", bairro:"CENTRO", materiais:[8] },
-  /* Escolas e creches municipais (planilha PEV-PILHAS e baterias): recebem pilhas e baterias. */
   {nome:"Creche Carlos Mayer Filho",endereco:"Rua Jaime Lino dos Santos, 158",bairro:"JARDIM ITANHAÉM",materiais:[10],lat:-24.165982,lng:-46.776702,link:"https://www.google.com/maps/dir//CARLOS+MAYER+FILHO+%E2%80%93+EM+ANA+C%C3%82NDIDA,+R.+Jaime+Lino+dos+Santos,+158+-+Jardim,+Itanha%C3%A9m+-+SP,+11740-000/@-24.1790936,-46.7786973,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94ce2b68af5b6aef:0x1ac80ed3c524af08!2m2!1d-46.7767025!2d-24.1659822"},
   {nome:"Creche Marcos Vinícius de Almeida Batista",endereco:"Rua Raimundo Batista de Andrade, 1045",bairro:"CIBRATEL 1",materiais:[10],lat:-24.202451,lng:-46.821576,link:"https://www.google.com/maps/dir//R.+Raimundo+Batista+de+Andrade,+1045+-+Cibratel+I,+Itanha%C3%A9m+-+SP,+11740-000/@-24.202299,-46.821696,15z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x94d1d54bcabf5685:0x6f0dde24d99675fd!2m2!1d-46.8215764!2d-24.2024506!3e2"},
   {nome:"Creche Mário Tisuyoshi Ginoza",endereco:"Rua Jose Roberio dos Santos, 1616",bairro:"JARDIM SÃO JOÃO",materiais:[10],lat:-24.227395,lng:-46.887719,link:"https://www.google.com/maps/dir//R.+Jose+Roberio+Dos+Santos,+1616+-+Balneario+California,+Itanha%C3%A9m+-+SP,+11740-000/@-24.2273408,-46.8883764,19.25z/data=!4m18!1m8!3m7!1s0x94d02a15e56f55d5:0x7cff3500eff72530!2sR.+Jose+Roberio+Dos+Santos,+1616+-+Balneario+California,+Itanha%C3%A9m+-+SP,+11740-000!3b1!8m2!3d-24.2273947!4d-46.8877194!16s%2Fg%2F11hv0_3vsj!4m8!1m0!1m5!1m1!1s0x94d02a15e56f55d5:0x7cff3500eff72530!2m2!1d-46.8877194!2d-24.2273947!3e2"},
@@ -74,7 +73,7 @@ const PONTOS = [
   {nome:"E.M. Eugênia Pitta Rangel Veloso",endereco:"Avenida Portugal, 260",bairro:"BELAS ARTES",materiais:[10],busca:"E.M. Eugênia Pitta Rangel Veloso, Avenida Portugal, 260 - Jardim Belas Artes, Itanhaém - SP, 11740-000"},
   {nome:"E.M. Filomena Dias Apelian",endereco:"Rua dos Expedicionários, 160",bairro:"BOPIRANGA",materiais:[10],busca:"E.M. Filomena Dias Apelian, Rua dos Expedicionários, 160 - Bopiranga, Itanhaém - SP, 11740-000"},
   {nome:"E.M. Gioconda Fagá",endereco:"Rua Dom Idílio José Soares, S/N",bairro:"JARDIM GRANDESP",materiais:[10],busca:"E.M. Gioconda Fagá, Rua Dom Idílio José Soares, s/n - Jardim Grandesp, Itanhaém - SP, 11740-000"},
-  {nome:"E.M. Harry Forssell",endereco:"Rua Urcezino Ferreira, 80",bairro:"SABAUNA",materiais:[10],busca:"E.M. Harry Forssell, Rua Urcezino Ferreira, 80 - Sabaúna, Itanhaém - SP, 11740-000"},
+  {nome:"E.M. Harry Forssell",endereco:"Rua Urcezino Ferreira, 80",bairro:"JD SABAUNA",materiais:[10],busca:"E.M. Harry Forssell, Rua Urcezino Ferreira, 80 - Sabaúna, Itanhaém - SP, 11740-000"},
   {nome:"E.M. Ignez Martins",endereco:"Rua das Palmeiras, 150",bairro:"JARDIM LARANJEIRAS",materiais:[10],busca:"E.M. Ignez Martins, Rua das Palmeiras, 150 - Jardim Laranjeiras, Itanhaém - SP, 11740-000"},
   {nome:"E.M. Itaílde Silva Castro Bragante",endereco:"Rua Principal, S/N",bairro:"CHÁCARAS DAS TÂMARAS",materiais:[10],busca:"E.M. Itaílde Silva Castro Bragante, Rua Principal, s/n - Chácaras das Tâmaras, Itanhaém - SP, 11740-000"},
   {nome:"E.M. José Teixeira Rosas",endereco:"Rua das Flores, S/N",bairro:"JARDIM CORONEL",materiais:[10],busca:"E.M. José Teixeira Rosas, Rua das Flores, s/n - Jardim Coronel, Itanhaém - SP, 11740-000"},
@@ -308,21 +307,32 @@ function updateMap(pts){
 /* página */
 function makeMulti(el, {allText, plural, options, onChange}){
   const id = el.id;
+  let opts = options, sig = options.map((o) => o.value).join("|");
   el.innerHTML = `<button type="button" class="select ms-btn" aria-haspopup="true" aria-expanded="false" aria-controls="${id}-panel" aria-labelledby="${id}-lbl ${id}-val" aria-describedby="filtrosHelp"><span id="${id}-val"></span>${ico("chevron","chev")}</button>
-  <div class="ms-panel" id="${id}-panel" tabindex="-1" role="group" aria-labelledby="${id}-lbl" hidden>${options.map((o) => `<label class="ms-opt"><input type="checkbox" value="${esc(o.value)}"><span class="ms-box">${ico("check")}</span>${o.color ? `<i class="ms-dot" style="background:${o.color}"></i>` : ""}<span>${esc(o.label)}</span></label>`).join("")}</div>`;
+  <div class="ms-panel" id="${id}-panel" tabindex="-1" role="group" aria-labelledby="${id}-lbl" hidden></div>`;
   const btn = el.querySelector(".ms-btn"), panel = el.querySelector(".ms-panel"), val = el.querySelector(`#${id}-val`);
-  const boxes = [...panel.querySelectorAll("input")];
-  const chosen = () => boxes.filter((b) => b.checked);
-  const summary = () => { const c = chosen(); val.textContent = c.length === 0 ? allText : c.length === 1 ? options.find((o) => String(o.value) === c[0].value).label : `${c.length} ${plural} selecionados`; };
+  const boxes = () => [...panel.querySelectorAll("input")];
+  const chosen = () => boxes().filter((b) => b.checked);
+  const draw = (sel) => { panel.innerHTML = opts.map((o) => `<label class="ms-opt"><input type="checkbox" value="${esc(o.value)}"${sel.has(String(o.value)) ? " checked" : ""}><span class="ms-box">${ico("check")}</span>${o.color ? `<i class="ms-dot" style="background:${o.color}"></i>` : ""}<span>${esc(o.label)}</span></label>`).join(""); };
+  const summary = () => { const c = chosen(); val.textContent = c.length === 0 ? allText : c.length === 1 ? opts.find((o) => String(o.value) === c[0].value).label : `${c.length} ${plural} selecionados`; };
   const open = (v) => { panel.hidden = !v; btn.setAttribute("aria-expanded", v); };
   btn.onclick = () => open(panel.hidden);
-  boxes.forEach((b) => b.onchange = () => { summary(); onChange(new Set(chosen().map((x) => x.value))); });
+  panel.addEventListener("change", () => { summary(); onChange(new Set(chosen().map((x) => x.value))); });
   el.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden){ e.stopPropagation(); open(false); btn.focus(); } });
   el.addEventListener("focusout", (e) => { if (e.relatedTarget && !el.contains(e.relatedTarget)) open(false); });
   document.addEventListener("click", (e) => { if (!el.contains(e.target)) open(false); });
-  summary();
-  return { set(vals){ const v = new Set([...vals].map(String)); boxes.forEach((b) => b.checked = v.has(b.value)); summary(); } };
+  draw(new Set()); summary();
+  return {
+    set(vals){ const v = new Set([...vals].map(String)); boxes().forEach((b) => b.checked = v.has(b.value)); summary(); },
+    setOptions(next){
+      const s2 = next.map((o) => o.value).join("|"); if (s2 === sig) return;
+      const keep = new Set(chosen().map((b) => b.value)); opts = next; sig = s2; draw(keep); summary();
+    }
+  };
 }
+
+const bairroOpts = (M) => [...new Set(PONTOS.filter((p) => M.size === 0 || p.materiais.some((id) => M.has(id))).map((p) => p.bairro))]
+  .sort((a,b) => titleCase(a).localeCompare(titleCase(b),"pt-BR")).map((b) => ({ value:b, label:titleCase(b) }));
 
 function buildFilters(){
   const matIds = Object.keys(LEG).map(Number).filter((id) => PONTOS.some((p) => p.materiais.includes(id)));
@@ -331,10 +341,9 @@ function buildFilters(){
     options: matIds.map((id) => ({ value:id, label:LEG[id], color:COLORS[id] })),
     onChange:(v) => { state.materials = new Set([...v].map(Number)); render(); }
   });
-  const bairros = [...new Set(PONTOS.map((p) => p.bairro))].sort((a,b) => a.localeCompare(b,"pt-BR"));
   bairroMs = makeMulti(document.getElementById("bairroMs"), {
     allText:"Todos os bairros", plural:"bairros",
-    options: bairros.map((b) => ({ value:b, label:titleCase(b) })),
+    options: bairroOpts(new Set()),
     onChange:(v) => { state.bairros = new Set(v); render(); }
   });
   document.getElementById("clearFilters").onclick = () => { state.materials.clear(); state.bairros.clear(); matMs.set([]); bairroMs.set([]); render(); };
@@ -394,6 +403,9 @@ function render(){
       ${m.note ? `<p class="note">${ico("alert")}<span>${esc(m.note)}</span></p>` : ""}</div>
     </details>`).join("");
 
+  const ofertados = new Set(bairroOpts(M).map((o) => o.value));
+  B.forEach((b) => { if (!ofertados.has(b)) B.delete(b); });
+  bairroMs.setOptions(bairroOpts(M));
   const pts = PONTOS.filter((p) => (M.size === 0 || p.materiais.some((id) => M.has(id))) && (B.size === 0 || B.has(p.bairro)));
   pts.forEach((p,i) => p.num = i + 1);
   document.getElementById("resultCount").textContent = pts.length === 0 ? "Nenhum ponto encontrado com esses filtros." : `${pts.length} ${pts.length === 1 ? "ponto encontrado" : "pontos encontrados"}`;
@@ -408,10 +420,10 @@ function buildFooter(){
 document.addEventListener("DOMContentLoaded", () => {
   buildFilters(); initA11y(); buildFooter();
   try{ initMap(); }catch(e){ map = null; document.getElementById("mapError").textContent = "Não foi possível iniciar o mapa."; }
-  render();   // uma única renderização: cartões, filtros e pinos
+  render();
 });
 
-/* VLibras (tradutor para Libras do governo federal): carrega em computador e tablet */
+/* VLibras (tradutor para Libras do governo federal): carrega em computador e tablet*/
 (function(){
   var desktop = window.matchMedia && matchMedia("(min-width:760px)").matches;
   if (!desktop){ var v = document.getElementById("vlibras"); if (v) v.remove(); return; }
