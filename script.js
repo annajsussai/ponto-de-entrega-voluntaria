@@ -107,7 +107,7 @@ const PONTOS = [
 /* só mostra em "O que posso levar?" as categorias que têm ao menos um ponto no mapa */
 const USED_MAT = new Set(PONTOS.flatMap((p) => p.materiais));
 /* ordem dos cartões em "O que posso levar?" */
-const CARD_ORDER = [11,10,1,4,9,5,8];
+const CARD_ORDER = [11,10,4,9,5,8,1];   /* o cartão com mais texto (1) fica por último */
 const LEG = {1:"Embalagens em geral",9:"Óleo lubrificante e filtro",5:"Medicamentos",10:"Pilhas e baterias",11:"Lâmpadas",8:"Eletrônicos",4:"Óleo de cozinha"};
 /* Uma cor única e distinta por material [cor, texto sobre a cor]: pinos, legenda, etiquetas e cartões. */
 const PAL = {1:["#3949AB","#fff"],2:["#00796B","#fff"],3:["#37474F","#fff"],4:["#F57C00","#111"],5:["#7B1FA2","#fff"],6:["#6D4C41","#fff"],7:["#D81B60","#fff"],8:["#C62828","#fff"],9:["#0277BD","#fff"],10:["#2E7D32","#fff"],11:["#FBC02D","#111"],12:["#9E9D24","#111"]};
@@ -334,7 +334,8 @@ function makeMulti(el, {allText, plural, options, onChange}){
   };
 }
 
-const bairroOpts = (M) => [...new Set(PONTOS.filter((p) => M.size === 0 || p.materiais.some((id) => M.has(id))).map((p) => p.bairro))]
+/* lista só os bairros que têm o material escolhido, mas NUNCA tira um bairro que a pessoa já marcou (antes ele sumia sem avisar) */
+const bairroOpts = (M, B = new Set()) => [...new Set(PONTOS.filter((p) => M.size === 0 || p.materiais.some((id) => M.has(id))).map((p) => p.bairro).concat([...B]))]
   .sort((a,b) => titleCase(a).localeCompare(titleCase(b),"pt-BR")).map((b) => ({ value:b, label:titleCase(b) }));
 
 function buildFilters(){
@@ -400,18 +401,16 @@ function render(){
   const M = state.materials, B = state.bairros;
   const mats = CARD_ORDER.map((id) => MATERIALS.find((m) => m.id === id)).filter((m) => m && USED_MAT.has(m.id) && (M.size === 0 || M.has(m.id)));
   document.getElementById("cardGrid").innerHTML = mats.map((m) => `
-    <details class="mat" style="--c:${COLORS[m.id]};--on:${ON[m.id]}"${ON[m.id] === "#111" ? " data-dark" : ""}${M.size > 0 ? " open" : ""}>
+    <details class="mat${m.items.join("").length > 250 ? " wide" : ""}" style="--c:${COLORS[m.id]};--on:${ON[m.id]}"${ON[m.id] === "#111" ? " data-dark" : ""}${M.size > 0 ? " open" : ""}>
       <summary><span class="ico" aria-hidden="true">${ico(m.icon)}</span><span>${esc(m.name)}</span><span class="more" aria-hidden="true">+</span></summary>
       <div class="body"><p class="intro">${esc(m.intro)}</p><ul role="list">${m.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
       ${m.note ? `<p class="note">${ico("alert")}<span>${esc(m.note)}</span></p>` : ""}</div>
     </details>`).join("");
 
-  const ofertados = new Set(bairroOpts(M).map((o) => o.value));
-  B.forEach((b) => { if (!ofertados.has(b)) B.delete(b); });
-  bairroMs.setOptions(bairroOpts(M));
+  bairroMs.setOptions(bairroOpts(M, B));
   const pts = PONTOS.filter((p) => (M.size === 0 || p.materiais.some((id) => M.has(id))) && (B.size === 0 || B.has(p.bairro)));
   pts.forEach((p,i) => p.num = i + 1);
-  document.getElementById("resultCount").textContent = pts.length === 0 ? "Nenhum ponto encontrado com esses filtros." : `${pts.length} ${pts.length === 1 ? "ponto encontrado" : "pontos encontrados"}`;
+  document.getElementById("resultCount").textContent = pts.length === 0 ? "Nenhum ponto encontrado com essa combinação de material e bairro. Desmarque um filtro ou use “Limpar filtros”." : `${pts.length} ${pts.length === 1 ? "ponto encontrado" : "pontos encontrados"}`;
   updateMap(pts);
 }
 
