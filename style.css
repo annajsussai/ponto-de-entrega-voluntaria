@@ -97,6 +97,9 @@ h2{font:800 clamp(1.9rem,6vw,2.6rem)/1.1 var(--display);color:var(--forest-2);ma
 .mat .ico{flex:none;display:grid;place-items:center;width:64px;height:64px;border-radius:20px;background:#fff;font-size:2.2rem;box-shadow:0 3px 0 rgba(0,0,0,.2)}
 .mat .more{margin-left:auto;flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.25);font-size:1.8rem;line-height:1;transition:transform .25s}
 .mat[open] .more{transform:rotate(45deg)}
+/* cartão com muito texto: ocupa a linha inteira, embaixo dos outros, com a lista em 2 colunas */
+.mat.wide[open]{grid-column:1/-1}
+@media(min-width:760px){.mat.wide[open] .body ul{columns:2;column-gap:2rem}.mat.wide[open] .body li{break-inside:avoid}}
 .mat .body{padding:1.1rem 1.3rem 1.4rem;border-top:6px solid var(--c)}
 .mat .intro{margin:0 0 .7rem;font-weight:700;color:var(--forest)}
 .mat ul{margin:0;padding:0;list-style:none}
